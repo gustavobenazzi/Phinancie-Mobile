@@ -1,12 +1,10 @@
-// prisma/schema.prisma
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql" // se usa Postgres
-  url      = env("DATABASE_URL") // vem do .env
+  provider = "postgresql"
+  url      = env("DATABASE_URL") //Adicionar .env
 }
 
 model User {
@@ -14,11 +12,12 @@ model User {
   name         String
   email        String   @unique
   passwordHash String
-  isActive     Boolean  @default(true)   // <--- novo
+  isActive     Boolean  @default(true)
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
   resetTokens  PasswordResetToken[]
+  transactions Transaction[]
 }
 
 model PasswordResetToken {
@@ -30,4 +29,15 @@ model PasswordResetToken {
   usedAt    DateTime?
 
   createdAt DateTime @default(now())
+}
+
+model Transaction {
+  id          String    @id @default(cuid())
+  userId      String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  amount      Float
+  type        String
+  description String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 }
