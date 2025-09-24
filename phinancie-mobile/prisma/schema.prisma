@@ -41,3 +41,12 @@ model Transaction {
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 }
+
+model meta_financeiro{
+  id                        Int @id @default(autoincrement())
+  codigo_usuario            Int
+  titulo_meta               String
+  valor                     Float
+  data_final                DateTime
+  data_criacao              DateTime @default(now())
+}
