@@ -7,6 +7,11 @@ datasource db {
   url      = env("DATABASE_URL") //Adicionar .env
 }
 
+enum TransactionType {
+  INCOME
+  EXPENSE
+}
+
 model User {
   id           String   @id @default(cuid())
   name         String
@@ -16,8 +21,25 @@ model User {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
-  resetTokens  PasswordResetToken[]
+  resetTokens   PasswordResetToken[]
+  transactions  Transaction[]
+  categories    Category[]
+  FinancialGoal FinancialGoal[]
+}
+
+model Category {
+  id   String          @id @default(cuid())
+  name String
+  icon String
+  type TransactionType
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
   transactions Transaction[]
+
+  @@unique([userId, name])
+  @@map("categories")
 }
 
 model PasswordResetToken {
@@ -27,26 +49,33 @@ model PasswordResetToken {
   user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   expiresAt DateTime
   usedAt    DateTime?
-
-  createdAt DateTime @default(now())
+  createdAt DateTime  @default(now())
 }
 
 model Transaction {
-  id          String    @id @default(cuid())
+  id          String          @id @default(cuid())
   userId      String
-  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user        User            @relation(fields: [userId], references: [id], onDelete: Cascade)
   amount      Float
-  type        String
+  type        TransactionType
   description String?
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
 }
 
-model meta_financeiro{
-  id                        Int @id @default(autoincrement())
-  codigo_usuario            Int
-  titulo_meta               String
-  valor                     Float
-  data_final                DateTime
-  data_criacao              DateTime @default(now())
+model FinancialGoal {
+  id        String   @id @default(cuid())
+  title     String
+  value     Float
+  endDate   DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("financial_goals")
 }

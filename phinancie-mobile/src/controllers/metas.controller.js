@@ -1,58 +1,92 @@
-const express = require('express');
-const { PrismaClient } = require('./generated/prisma');
-const prisma = new PrismaClient();
-const app = express();
+import { prisma } from "../lib/prisma.js"; 
 
+export async function create(req, res) {
+  try {
+    const { title, value, endDate } = req.body;
+    const userId = req.userId; 
 
-app.use(express.json());
+    if (!title || !value || !endDate) {
+      return res.status(400).json({ error: "Título, valor e data final são obrigatórios" });
+    }
 
-//lista todas as metas (Read)
-app.get('/metas', async(req,res) => {
-    const metas = await prisma.meta_financeiro.findMany();
-    res.json(metas);
-
-})
-
-//Criar nova meta (Create)
-app.post('/metas', async(req,res) =>{
-    const {codigo_usuario,titulo_meta,valor,data_final} = req.body;
-    const meta = await prisma.meta_financeiro.create({
-        data:{
-            codigo_usuario,
-            titulo_meta,
-            valor,
-            data_final: new Date(data_final),
-
-
-        }
+    const goal = await prisma.financialGoal.create({
+      data: {
+        title,
+        value,
+        endDate: new Date(endDate),
+        userId,
+      },
     });
-    res.json(meta)
-})
 
-//Editar meta (Update)
+    return res.status(201).json({ data: goal });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Erro interno ao criar meta" });
+  }
+}
 
-app.put('/metas/:id', async(req,res) =>{
-    const {id} = req.params;
-    const {titulo_meta,valor,data_final} = req.body;
-    const meta = await prisma.meta_financeiro.update({
-        where:{ id: parseInt(id)},
-    data:{
-        titulo_meta,
-        valor,
-        data_final: new Date(data_final),
-    },
+export async function getAll(req, res) {
+  try {
+    const userId = req.userId;
+
+    const goals = await prisma.financialGoal.findMany({
+      where: { userId: userId },
+      orderBy: { endDate: 'asc' },
     });
-    res.json(meta)
 
-});
+    return res.json({ data: goals });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Erro interno ao buscar metas" });
+  }
+}
 
-//Deletar meta (Delete)
+export async function update(req, res) {
+  try {
+    const { id } = req.params;
+    const { title, value, endDate } = req.body;
+    const userId = req.userId;
 
-app.delete('/metas/:id', async(req,res) =>{
-    const {id} = req.params;
-    await prisma.meta_financeiro.delete({
-        where:{ id:parseInt(id)},
+    const goalExists = await prisma.financialGoal.findFirst({
+      where: { id: id, userId: userId },
     });
-    res.json("Meta removida com sucesso!")
-})
 
+    if (!goalExists) {
+      return res.status(404).json({ error: "Meta não encontrada" });
+    }
+
+    const updatedGoal = await prisma.financialGoal.update({
+      where: { id: id },
+      data: { title, value, endDate: new Date(endDate) },
+    });
+
+    return res.json({ data: updatedGoal });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Erro interno ao atualizar meta" });
+  }
+}
+
+export async function remove(req, res) {
+  try {
+    const { id } = req.params;
+    const userId = req.userId;
+
+    const goalExists = await prisma.financialGoal.findFirst({
+      where: { id: id, userId: userId },
+    });
+
+    if (!goalExists) {
+      return res.status(404).json({ error: "Meta não encontrada" });
+    }
+
+    await prisma.financialGoal.delete({
+      where: { id: id },
+    });
+
+    return res.status(204).send();
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Erro interno ao deletar meta" });
+  }
+}

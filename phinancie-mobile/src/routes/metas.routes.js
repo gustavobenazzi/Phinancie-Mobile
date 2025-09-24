@@ -1,10 +1,11 @@
-const express = require('express');
-const router = express.Router();
-const metasController = require('../controllers/metasController');
+import { Router } from 'express';
+import { create, getAll, update, remove } from '../controllers/metas.controller.js';
 
-router.get('/', metasController.getAll);
-router.post('/', metasController.create);
-router.put('/:id', metasController.update);
-router.delete('/:id', metasController.remove);
+const router = Router();
 
-module.exports = router;
+router.post('/', create);
+router.get('/', getAll);
+router.put('/:id', update);
+router.delete('/:id', remove);
+
+export default router;
