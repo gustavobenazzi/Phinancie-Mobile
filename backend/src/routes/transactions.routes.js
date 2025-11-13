@@ -12,8 +12,3 @@ router.patch("/:id", auth, updateTransaction);
 router.delete("/:id", auth, deleteTransaction);
 
 export default router;
-
-/* Exemplo de .env
-DATABASE_URL="postgresql://user:senha@localhost:5432/postgres?schema=public"
-JWT_SECRET="teste"
-*/

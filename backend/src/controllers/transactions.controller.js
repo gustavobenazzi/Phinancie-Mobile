@@ -2,18 +2,27 @@ import { prisma } from "../lib/prisma.js";
 
 export async function createTransaction(req, res) {
   try {
-    const { userId, amount, type, description } = req.body;
+    const { amount, type, description, categoryId } = req.body;
+    const userId = req.user.id;
 
-    if (!userId || amount === undefined || !type) {
-      return res.status(400).json({ error: "userId, amount e type são obrigatórios" });
+    if (amount === undefined || !type || !categoryId) {
+      return res.status(400).json({ error: "amount, type e categoryId são obrigatórios" });
     }
 
-    if (!["credit", "debit"].includes(type)) {
-      return res.status(400).json({ error: "type deve ser 'credit' ou 'debit'" });
+    if (!["INCOME", "EXPENSE"].includes(type)) {
+      return res.status(400).json({ error: "type deve ser 'INCOME' ou 'EXPENSE'" });
+    }
+
+    // Verificar se a categoria existe e pertence ao usuário
+    const category = await prisma.category.findFirst({
+      where: { id: categoryId, userId },
+    });
+    if (!category) {
+      return res.status(400).json({ error: "categoria inválida ou não pertence ao usuário" });
     }
 
     const transaction = await prisma.transaction.create({
-      data: { userId, amount, type, description },
+      data: { userId, amount, type, description, categoryId },
     });
 
     return res.status(201).json({ data: transaction });
@@ -70,9 +79,18 @@ export async function updateTransaction(req, res) {
   try {
     const { id } = req.params;
     const { amount, type, description } = req.body;
+    const userId = req.user.id;
 
-    if (type !== undefined && !["credit", "debit"].includes(type)) {
-      return res.status(400).json({ error: "type deve ser 'credit' ou 'debit'" });
+    if (type !== undefined && !["INCOME", "EXPENSE"].includes(type)) {
+      return res.status(400).json({ error: "type deve ser 'INCOME' ou 'EXPENSE'" });
+    }
+
+    // Verificar se a transação pertence ao usuário
+    const existingTransaction = await prisma.transaction.findFirst({
+      where: { id, userId },
+    });
+    if (!existingTransaction) {
+      return res.status(404).json({ error: "transação não encontrada ou não pertence ao usuário" });
     }
 
     const transaction = await prisma.transaction.update({

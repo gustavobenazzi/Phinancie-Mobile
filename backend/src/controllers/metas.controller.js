@@ -3,7 +3,7 @@ import { prisma } from "../lib/prisma.js";
 export async function create(req, res) {
   try {
     const { title, value, endDate } = req.body;
-    const userId = req.userId; 
+    const userId = req.user.id;
 
     if (!title || !value || !endDate) {
       return res.status(400).json({ error: "Título, valor e data final são obrigatórios" });
@@ -27,7 +27,7 @@ export async function create(req, res) {
 
 export async function getAll(req, res) {
   try {
-    const userId = req.userId;
+    const userId = req.user.id;
 
     const goals = await prisma.financialGoal.findMany({
       where: { userId: userId },
@@ -45,7 +45,7 @@ export async function update(req, res) {
   try {
     const { id } = req.params;
     const { title, value, endDate } = req.body;
-    const userId = req.userId;
+    const userId = req.user.id;
 
     const goalExists = await prisma.financialGoal.findFirst({
       where: { id: id, userId: userId },
@@ -70,7 +70,7 @@ export async function update(req, res) {
 export async function remove(req, res) {
   try {
     const { id } = req.params;
-    const userId = req.userId;
+    const userId = req.user.id;
 
     const goalExists = await prisma.financialGoal.findFirst({
       where: { id: id, userId: userId },
