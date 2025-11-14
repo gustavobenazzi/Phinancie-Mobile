@@ -1,78 +1,37 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 export default function DashboardScreen() {
   const navigation = useNavigation();
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Dashboard</Text>
-      <Text style={styles.subtitle}>Bem-vindo ao Phinancie!</Text>
+    <View className="flex-1 p-5 bg-gray-100">
+      <Text className="text-3xl font-bold text-center mb-2 text-gray-800">Dashboard</Text>
+      <Text className="text-base text-center mb-10 text-gray-600">Bem-vindo ao Phinancie!</Text>
 
-      <View style={styles.menu}>
+      <View className="flex-1 justify-center">
         <TouchableOpacity
-          style={styles.menuItem}
+          className="bg-white p-5 rounded-lg mb-4 shadow"
           onPress={() => navigation.navigate('Transactions')}
         >
-          <Text style={styles.menuText}>Transações</Text>
+          <Text className="text-lg text-center text-gray-800">Transações</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={styles.menuItem}
+          className="bg-white p-5 rounded-lg mb-4 shadow"
           onPress={() => navigation.navigate('Categories')}
         >
-          <Text style={styles.menuText}>Categorias</Text>
+          <Text className="text-lg text-center text-gray-800">Categorias</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={styles.menuItem}
+          className="bg-white p-5 rounded-lg mb-4 shadow"
           onPress={() => navigation.navigate('Goals')}
         >
-          <Text style={styles.menuText}>Metas</Text>
+          <Text className="text-lg text-center text-gray-800">Metas</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    backgroundColor: '#f5f5f5',
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginBottom: 10,
-    color: '#333',
-  },
-  subtitle: {
-    fontSize: 16,
-    textAlign: 'center',
-    marginBottom: 40,
-    color: '#666',
-  },
-  menu: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  menuItem: {
-    backgroundColor: '#fff',
-    padding: 20,
-    borderRadius: 8,
-    marginBottom: 15,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
-  },
-  menuText: {
-    fontSize: 18,
-    textAlign: 'center',
-    color: '#333',
-  },
-});

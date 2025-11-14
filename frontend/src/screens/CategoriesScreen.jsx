@@ -3,8 +3,6 @@ import {
   View,
   Text,
   FlatList,
-  StyleSheet,
-  TouchableOpacity,
   Alert,
 } from 'react-native';
 import api from '../services/api';
@@ -29,96 +27,34 @@ export default function CategoriesScreen() {
   };
 
   const renderCategory = ({ item }) => (
-    <View style={styles.categoryItem}>
-      <Text style={styles.icon}>{item.icon}</Text>
-      <View style={styles.categoryInfo}>
-        <Text style={styles.name}>{item.name}</Text>
-        <Text style={[styles.type, item.type === 'INCOME' ? styles.income : styles.expense]}>
-          {item.type === 'INCOME' ? 'Receita' : 'Despesa'}
-        </Text>
+    <View className="bg-white p-4 rounded-lg mb-2 flex-row items-center shadow-sm">
+      <Text className="text-2xl mr-4">{item.icon}</Text>
+      <View className="flex-1">
+        <Text className="text-base font-bold text-gray-800">{item.name}</Text>
+        <Text className={`text-sm mt-0.5 ${item.type === 'INCOME' ? 'text-green-600' : 'text-red-600'}`}>{item.type === 'INCOME' ? 'Receita' : 'Despesa'}</Text>
       </View>
     </View>
   );
 
   if (loading) {
     return (
-      <View style={styles.center}>
+      <View className="flex-1 justify-center items-center">
         <Text>Carregando...</Text>
       </View>
     );
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Categorias</Text>
+    <View className="flex-1 p-5 bg-gray-100">
+      <Text className="text-2xl font-bold mb-5 text-gray-800">Categorias</Text>
       <FlatList
         data={categories}
         renderItem={renderCategory}
         keyExtractor={(item) => item.id}
         ListEmptyComponent={
-          <Text style={styles.empty}>Nenhuma categoria encontrada</Text>
+          <Text className="text-center text-base text-gray-500 mt-12">Nenhuma categoria encontrada</Text>
         }
       />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    backgroundColor: '#f5f5f5',
-  },
-  center: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-    color: '#333',
-  },
-  categoryItem: {
-    backgroundColor: '#fff',
-    padding: 15,
-    borderRadius: 8,
-    marginBottom: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
-    elevation: 2,
-  },
-  icon: {
-    fontSize: 24,
-    marginRight: 15,
-  },
-  categoryInfo: {
-    flex: 1,
-  },
-  name: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#333',
-  },
-  type: {
-    fontSize: 14,
-    marginTop: 2,
-  },
-  income: {
-    color: '#28a745',
-  },
-  expense: {
-    color: '#dc3545',
-  },
-  empty: {
-    textAlign: 'center',
-    fontSize: 16,
-    color: '#666',
-    marginTop: 50,
-  },
-});

@@ -5,7 +5,6 @@ import {
   TextInput,
   TouchableOpacity,
   Alert,
-  StyleSheet,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -40,12 +39,12 @@ export default function LoginScreen() {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Phinancie</Text>
-      <Text style={styles.subtitle}>Controle suas finanças</Text>
+    <View className="flex-1 justify-center p-5 bg-gray-100">
+      <Text className="text-3xl font-bold text-center mb-2 text-gray-800">Phinancie</Text>
+      <Text className="text-base text-center mb-10 text-gray-600">Controle suas finanças</Text>
 
       <TextInput
-        style={styles.input}
+        className="bg-white p-4 rounded-lg mb-4 border border-gray-300"
         placeholder="Email"
         value={email}
         onChangeText={setEmail}
@@ -54,7 +53,7 @@ export default function LoginScreen() {
       />
 
       <TextInput
-        style={styles.input}
+        className="bg-white p-4 rounded-lg mb-4 border border-gray-300"
         placeholder="Senha"
         value={password}
         onChangeText={setPassword}
@@ -62,58 +61,14 @@ export default function LoginScreen() {
       />
 
       <TouchableOpacity
-        style={[styles.button, loading && styles.buttonDisabled]}
+        className={`p-4 rounded-lg items-center ${loading ? 'bg-gray-400' : 'bg-blue-600'}`}
         onPress={handleLogin}
         disabled={loading}
       >
-        <Text style={styles.buttonText}>
+        <Text className="text-white text-base font-bold">
           {loading ? 'Entrando...' : 'Entrar'}
         </Text>
       </TouchableOpacity>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    padding: 20,
-    backgroundColor: '#f5f5f5',
-  },
-  title: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginBottom: 8,
-    color: '#333',
-  },
-  subtitle: {
-    fontSize: 16,
-    textAlign: 'center',
-    marginBottom: 40,
-    color: '#666',
-  },
-  input: {
-    backgroundColor: '#fff',
-    padding: 16,
-    borderRadius: 8,
-    marginBottom: 16,
-    borderWidth: 1,
-    borderColor: '#ddd',
-  },
-  button: {
-    backgroundColor: '#007bff',
-    padding: 16,
-    borderRadius: 8,
-    alignItems: 'center',
-  },
-  buttonDisabled: {
-    backgroundColor: '#ccc',
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-});
