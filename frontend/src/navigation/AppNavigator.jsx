@@ -8,6 +8,8 @@ import DashboardScreen from '../screens/DashboardScreen';
 import TransactionsScreen from '../screens/TransactionsScreen';
 import CategoriesScreen from '../screens/CategoriesScreen';
 import GoalsScreen from '../screens/GoalsScreen';
+import RegisterScreen from '../screens/RegisterScreen';
+import ForgotPasswordScreen from '../screens/ForgotPasswordScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -39,6 +41,16 @@ export default function AppNavigator() {
           name="Goals"
           component={GoalsScreen}
           options={{ title: 'Metas' }}
+        />
+        <Stack.Screen
+          name="Register"
+          component={RegisterScreen}
+          options={{ title: 'Registrar' }}
+        />
+        <Stack.Screen
+          name="ForgotPassword"
+          component={ForgotPasswordScreen}
+          options={{ title: 'Recuperar senha' }}
         />
       </Stack.Navigator>
     </NavigationContainer>

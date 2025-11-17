@@ -60,6 +60,12 @@ export default function LoginScreen() {
         secureTextEntry
       />
 
+      <View className="flex-row justify-end mb-4">
+        <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
+          <Text className="text-blue-600 font-semibold">Esqueceu a senha?</Text>
+        </TouchableOpacity>
+      </View>
+
       <TouchableOpacity
         className={`p-4 rounded-lg items-center ${loading ? 'bg-gray-400' : 'bg-blue-600'}`}
         onPress={handleLogin}
@@ -69,6 +75,13 @@ export default function LoginScreen() {
           {loading ? 'Entrando...' : 'Entrar'}
         </Text>
       </TouchableOpacity>
+
+      <View className="flex-row justify-center mt-6">
+        <Text className="text-gray-600">Não tem conta? </Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+          <Text className="text-blue-600 font-semibold">Registre-se</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
