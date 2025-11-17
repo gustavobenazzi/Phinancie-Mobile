@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import FormScreen from '../components/FormScreen';
 
 export default function RegisterScreen() {
   const navigation = useNavigation();
@@ -33,9 +34,7 @@ export default function RegisterScreen() {
   };
 
   return (
-    <View className="flex-1 p-5 bg-gray-100">
-      <Text className="text-3xl font-bold text-center mb-2 text-gray-800">Phinancie</Text>
-      <Text className="text-base text-center mb-6 text-gray-600">Crie sua conta</Text>
+    <FormScreen title="Phinancie" subtitle="Crie sua conta">
 
       <TextInput
         className="bg-white p-4 rounded-lg mb-4 border border-gray-300"
@@ -91,6 +90,6 @@ export default function RegisterScreen() {
           <Text className="text-blue-600 font-semibold">Faça login</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </FormScreen>
   );
 }

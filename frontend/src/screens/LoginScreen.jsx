@@ -1,14 +1,9 @@
 import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  Alert,
-} from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import api from '../services/api';
+import FormScreen from '../components/FormScreen';
 
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
@@ -39,9 +34,7 @@ export default function LoginScreen() {
   };
 
   return (
-    <View className="flex-1 justify-center p-5 bg-gray-100">
-      <Text className="text-3xl font-bold text-center mb-2 text-gray-800">Phinancie</Text>
-      <Text className="text-base text-center mb-10 text-gray-600">Controle suas finanças</Text>
+    <FormScreen title="Phinancie" subtitle="Controle suas finanças">
 
       <TextInput
         className="bg-white p-4 rounded-lg mb-4 border border-gray-300"
@@ -82,6 +75,6 @@ export default function LoginScreen() {
           <Text className="text-blue-600 font-semibold">Registre-se</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </FormScreen>
   );
 }
