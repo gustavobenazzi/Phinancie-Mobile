@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import FormScreen from '../components/FormScreen';
+import api from '../services/api';
 
 export default function RegisterScreen() {
   const navigation = useNavigation();
@@ -23,11 +24,13 @@ export default function RegisterScreen() {
     }
     setLoading(true);
     try {
-      // Backend ainda não possui rota de cadastro
-      Alert.alert('Info', 'Registro em construção. Redirecionando para login.');
+      // Observação: backend não possui campo CPF no modelo; enviamos apenas o que a API aceita.
+      await api.post('/users', { name, email, password });
+      Alert.alert('Sucesso', 'Conta criada com sucesso. Faça login.');
       navigation.navigate('Login');
     } catch (e) {
-      Alert.alert('Erro', 'Não foi possível registrar');
+      const msg = e?.response?.data?.error || 'Não foi possível registrar';
+      Alert.alert('Erro', msg);
     } finally {
       setLoading(false);
     }
