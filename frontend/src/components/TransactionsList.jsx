@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, ActivityIndicator } from 'react-native';
-import SalaryIcon from '../../assets/Salary.svg';
+import CarIcon from '../../assets/Car.svg';
 import FoodIcon from '../../assets/Food.svg';
+import SalaryIcon from '../../assets/Salary.svg';
+import HomeIcon from '../../assets/Home.svg';
+import MoreIcon from '../../assets/More.svg';
 import api from '../services/api';
 
 const TransactionsList = ({ limit }) => {
@@ -26,13 +29,18 @@ const TransactionsList = ({ limit }) => {
 
   const displayedTransactions = limit ? transactions.slice(0, limit) : transactions;
 
-  const renderIcon = (categoryName) => {
-    // Simple logic to choose icon based on category name or type
-    // Ideally this should come from the backend or a more robust mapping
-    if (categoryName?.toLowerCase().includes('salário') || categoryName?.toLowerCase().includes('ganhos')) {
-      return <SalaryIcon width={26} height={24} color="#F1FFF3" />;
-    }
-    return <FoodIcon width={18} height={28} color="#F1FFF3" />;
+  const ICON_MAP = {
+    Car: CarIcon,
+    Food: FoodIcon,
+    Salary: SalaryIcon,
+    Home: HomeIcon,
+    More: MoreIcon,
+  };
+
+  const renderIcon = (category) => {
+    const iconKey = category?.icon;
+    const IconComponent = (iconKey && ICON_MAP[iconKey]) || ICON_MAP[category?.name] || FoodIcon;
+    return <IconComponent width={24} height={24} color="#F1FFF3" />;
   };
 
   const renderColor = (type) => {
@@ -83,7 +91,7 @@ const TransactionsList = ({ limit }) => {
                 className="w-[58px] h-[53px] rounded-[22px] items-center justify-center mr-4"
                 style={{ backgroundColor: renderColor(item.type) }}
               >
-                  {renderIcon(item.category?.name || item.description)}
+                  {renderIcon(item.category)}
               </View>
               
               {/* Divider Line */}

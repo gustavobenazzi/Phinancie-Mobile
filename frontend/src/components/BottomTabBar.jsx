@@ -1,44 +1,37 @@
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
-import { useNavigation, useRoute } from '@react-navigation/native';
 import HomeIcon from '../../assets/Home.svg';
 import SearchIcon from '../../assets/Search.svg';
 import TaskSquareIcon from '../../assets/task-square.svg';
 import SettingIcon from '../../assets/setting-2.svg';
 
-const BottomTabBar = () => {
-  const navigation = useNavigation();
-  let routeName = '';
-  
-  try {
-    // Try to get the current route name. 
-    // Since BottomTabBar is used inside screens, useRoute might work if the component is a child of the screen.
-    // However, if it's not directly under a navigator, it might be tricky.
-    // But here it is used inside DashboardScreen and TransactionsScreen.
-    const route = useRoute();
-    routeName = route.name;
-  } catch (e) {
-    // Fallback or ignore if used outside navigation context (unlikely here)
-  }
+const BottomTabBar = ({ state, navigation }) => {
+  const currentRoute = state?.routes?.[state.index]?.name;
 
-  const getIconColor = (screenName) => {
-    return routeName === screenName ? "#00D09E" : "#A3A3A3";
+  const getIconColor = (screenName) => (currentRoute === screenName ? '#00D09E' : '#A3A3A3');
+
+  const handleNavigate = (screenName) => {
+    if (screenName && currentRoute !== screenName) {
+      navigation.navigate(screenName);
+    }
   };
 
   return (
-    <View className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-100 flex-row justify-around items-center pb-8 pt-4 rounded-t-[32px] shadow-lg">
-      <TouchableOpacity className="items-center" onPress={() => navigation.navigate('Dashboard')}>
-        <HomeIcon width={24} height={24} color={getIconColor('Dashboard')} />
-      </TouchableOpacity>
-      <TouchableOpacity className="items-center">
-        <SearchIcon width={24} height={24} color="#A3A3A3" />
-      </TouchableOpacity>
-      <TouchableOpacity className="items-center" onPress={() => navigation.navigate('Transactions')}>
-        <TaskSquareIcon width={24} height={24} color={getIconColor('Transactions')} />
-      </TouchableOpacity>
-      <TouchableOpacity className="items-center">
-        <SettingIcon width={24} height={24} color="#A3A3A3" />
-      </TouchableOpacity>
+    <View className="bg-white border-t border-gray-100 rounded-t-[32px] shadow-lg h-[96px] px-6 justify-center">
+      <View className="flex-row w-full justify-evenly items-center">
+        <TouchableOpacity className="items-center p-3" onPress={() => handleNavigate('Dashboard')}>
+          <HomeIcon width={28} height={28} color={getIconColor('Dashboard')} />
+        </TouchableOpacity>
+        <TouchableOpacity className="items-center p-3">
+          <SearchIcon width={28} height={28} color="#A3A3A3" />
+        </TouchableOpacity>
+        <TouchableOpacity className="items-center p-3" onPress={() => handleNavigate('Transactions')}>
+          <TaskSquareIcon width={28} height={28} color={getIconColor('Transactions')} />
+        </TouchableOpacity>
+        <TouchableOpacity className="items-center p-3">
+          <SettingIcon width={28} height={28} color="#A3A3A3" />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };

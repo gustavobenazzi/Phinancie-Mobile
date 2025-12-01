@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -9,7 +9,66 @@ export default function LoginScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [rememberLogin, setRememberLogin] = useState(false);
   const navigation = useNavigation();
+
+  useEffect(() => {
+    const loadSavedLogin = async () => {
+      try {
+        const shouldRemember = await AsyncStorage.getItem('rememberLogin');
+        if (shouldRemember === 'true') {
+          const savedEmail = await AsyncStorage.getItem('savedEmail');
+          const savedPassword = await AsyncStorage.getItem('savedPassword');
+          if (savedEmail) setEmail(savedEmail);
+          if (savedPassword) setPassword(savedPassword);
+          setRememberLogin(true);
+        }
+      } catch (error) {
+        console.log('Não foi possível carregar o login salvo', error);
+      }
+    };
+
+    loadSavedLogin();
+  }, []);
+
+  const persistRememberLogin = async (shouldRemember, currentEmail, currentPassword) => {
+    try {
+      if (shouldRemember) {
+        await AsyncStorage.multiSet([
+          ['rememberLogin', 'true'],
+          ['savedEmail', currentEmail],
+          ['savedPassword', currentPassword],
+        ]);
+      } else {
+        await AsyncStorage.multiRemove(['rememberLogin', 'savedEmail', 'savedPassword']);
+      }
+    } catch (error) {
+      console.log('Falha ao atualizar o estado de lembrar login', error);
+    }
+  };
+
+  const handleToggleRemember = async () => {
+    const nextValue = !rememberLogin;
+    setRememberLogin(nextValue);
+    await persistRememberLogin(nextValue, email, password);
+  };
+
+  useEffect(() => {
+    if (!rememberLogin) return;
+
+    const syncCredentials = async () => {
+      try {
+        await AsyncStorage.multiSet([
+          ['savedEmail', email],
+          ['savedPassword', password],
+        ]);
+      } catch (error) {
+        console.log('Não foi possível sincronizar o login salvo', error);
+      }
+    };
+
+    syncCredentials();
+  }, [email, password, rememberLogin]);
 
   const handleLogin = async () => {
     if (!email || !password) {
@@ -25,7 +84,8 @@ export default function LoginScreen() {
       await AsyncStorage.setItem('authToken', token);
       await AsyncStorage.setItem('user', JSON.stringify(user));
 
-      navigation.replace('Dashboard');
+      await persistRememberLogin(rememberLogin, email, password);
+      navigation.replace('MainTabs');
     } catch (error) {
       Alert.alert('Erro', error.response?.data?.error || 'Erro ao fazer login');
     } finally {
@@ -53,7 +113,16 @@ export default function LoginScreen() {
         secureTextEntry
       />
 
-      <View className="flex-row justify-end mb-4">
+      <View className="flex-row justify-between items-center mb-4">
+        <TouchableOpacity className="flex-row items-center" onPress={handleToggleRemember} activeOpacity={0.8}>
+          <View
+            className={`w-5 h-5 rounded border flex items-center justify-center ${rememberLogin ? 'bg-blue-600 border-blue-600' : 'border-gray-400 bg-white'}`}
+          >
+            {rememberLogin && <View className="w-3 h-3 bg-white rounded" />}
+          </View>
+          <Text className="ml-2 text-gray-700 font-medium">Lembrar login</Text>
+        </TouchableOpacity>
+
         <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
           <Text className="text-blue-600 font-semibold">Esqueceu a senha?</Text>
         </TouchableOpacity>

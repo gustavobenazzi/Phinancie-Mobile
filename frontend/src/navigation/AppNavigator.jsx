@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 // Import screens (to be created)
 import LoginScreen from '../screens/LoginScreen';
@@ -11,8 +12,20 @@ import CategoriesScreen from '../screens/CategoriesScreen';
 import GoalsScreen from '../screens/GoalsScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 import ForgotPasswordScreen from '../screens/ForgotPasswordScreen';
+import BottomTabBar from '../components/BottomTabBar';
 
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+
+const MainTabs = () => (
+  <Tab.Navigator
+    screenOptions={{ headerShown: false }}
+    tabBar={(props) => <BottomTabBar {...props} />}
+  >
+    <Tab.Screen name="Dashboard" component={DashboardScreen} />
+    <Tab.Screen name="Transactions" component={TransactionsScreen} />
+  </Tab.Navigator>
+);
 
 export default function AppNavigator() {
   return (
@@ -24,14 +37,9 @@ export default function AppNavigator() {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="Dashboard"
-          component={DashboardScreen}
-          options={{ title: 'Dashboard' }}
-        />
-        <Stack.Screen
-          name="Transactions"
-          component={TransactionsScreen}
-          options={{ title: 'Transações', headerShown: false }}
+          name="MainTabs"
+          component={MainTabs}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="AddTransaction"
