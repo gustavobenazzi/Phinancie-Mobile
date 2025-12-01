@@ -2,7 +2,7 @@ import { prisma } from "../lib/prisma.js";
 
 export async function createTransaction(req, res) {
   try {
-    const { amount, type, description, categoryId } = req.body;
+    const { amount, type, description, categoryId, date, establishment } = req.body;
     const userId = req.user.id;
 
     if (amount === undefined || !type || !categoryId) {
@@ -22,7 +22,15 @@ export async function createTransaction(req, res) {
     }
 
     const transaction = await prisma.transaction.create({
-      data: { userId, amount, type, description, categoryId },
+      data: { 
+        userId, 
+        amount, 
+        type, 
+        description, 
+        categoryId,
+        establishment,
+        date: date ? new Date(date) : undefined,
+      },
     });
 
     return res.status(201).json({ data: transaction });
@@ -61,6 +69,7 @@ export async function listTransactions(req, res) {
         skip: (page - 1) * limit,
         take: limit,
         orderBy: { createdAt: "desc" },
+        include: { category: true },
       }),
       prisma.transaction.count({ where }),
     ]);

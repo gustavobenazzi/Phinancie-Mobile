@@ -2,12 +2,13 @@ import { prisma } from "../lib/prisma.js";
 
 export async function createCategory(req, res) {
   try {
-    const { name, type, icon, userId } = req.body;
+    const { name, type, icon } = req.body;
+    const userId = req.user.id;
 
-    if (!userId || !name || !type || !icon) {
+    if (!name || !type || !icon) {
       return res
         .status(400)
-        .json({ error: "userId, nome, tipo e ícone são obrigatórios" });
+        .json({ error: "nome, tipo e ícone são obrigatórios" });
     }
 
     const existingCategory = await prisma.category.findFirst({
@@ -41,10 +42,7 @@ export async function createCategory(req, res) {
 
 export async function getAllCategories(req, res) {
   try {
-    const { userId } = req.query;
-    if (!userId) {
-      return res.status(400).json({ error: "O 'userId' é obrigatório nos query parameters." });
-    }
+    const userId = req.user.id;
 
     const categories = await prisma.category.findMany({
       where: { userId: userId },
