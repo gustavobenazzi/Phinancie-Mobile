@@ -1,0 +1,114 @@
+# 📑 Documento de Requisitos (DR)
+
+## 1. INTRODUÇÃO
+
+### 1.1 Objetivo
+
+Este documento descreve os requisitos para o desenvolvimento do Phinanciê, uma ferramenta de gestão financeira pessoal.
+Contéudo do projeto: objetivos, briefing, análise competitiva e questionário com usuários. Os requisitos são derivados dos objetivos principais (controle de finanças via automação, categorização, relatórios e metas) e consideram termos como Receita, Despesas, Orçamento, UI/UX, MVP e API.
+
+### 1.2 Escopo resumido
+
+O foco é em um MVP intuitivo, eficiente e seguro, com diferenciação em automação (importação de extratos em OFX, CSV).
+
+---
+
+## 2. DESCRIÇÃO GERAL
+
+### 2.1 Usuários do sistema
+
+Qualquer pessoa que deseja realizar uma gestão financeira. Inexperientes em finanças, buscando simplicidade.
+
+### 2.2 Funcionalidades gerais
+
+Automatizar registro de receitas/despesas via importação.
+Categorizar transações.
+Gerar relatórios/gráficos de receita e gastos.
+Permitir definição/monitoramento de orçamentos e metas.
+
+
+### 2.3 Restrições e premissas
+
+Ex.: deve rodar em navegador, deve estar em _compliance_ com a LGPD, deve usar determinada tecnologia, etc.
+Deve rodar em plataforma mobile, 
+Hardware: Dispositivos com no mínimo 2GB RAM.
+Deve estar de acordo com a LGPD estabelecida.
+Software: Backend em Node.js; Frontend em React-Native; Banco de dados relacional com criptografia.
+
+---
+
+## 3. REQUISITOS ESPECÍFICOS
+
+### 3.1 Requisitos Funcionais (RF)
+
+RF-01: Registro Automatizado de Transações.RF-02: Organização por Categorias.
+RF-03: Visualização de Relatórios e Gráficos.
+RF-04: Definição e Monitoramento de Orçamentos/Metas.
+
+### 3.2 Requisitos Não Funcionais (RNF)
+
+RNF-01: Todos os dados financeiros devem ser criptografados e armazenados com autenticação de dois fatores (2FA).
+RNF-02: Interface intuitiva, com prototipagem em Figma; tempo de aprendizado <5 minutos; acessibilidade.
+RNF-03: Tempo de resposta <2s para importações; suporte a 100 transações/minuto.
+RNF-04: Disponibilidade 99%; backup automático diário.
+RNF-05: Código modular com documentação; uso de Git para versionamento.
+
+## 4. CASOS DE USO
+
+**UC01 – Autenticar Usuário**
+
+- *Ator: Usuário*
+
+- *Fluxo principal:*
+
+1. O usuário abre o aplicativo Phinancie.
+
+2. O usuário informa e-mail e senha.
+
+3. O sistema valida as credenciais no backend (Node.js/Express/Prisma).
+
+4. O sistema autentica o usuário e retorna um token de sessão.
+
+5. O aplicativo redireciona o usuário para o Tela principal.
+
+**UC02 – Registrar Transação (Receita ou Despesa)**
+
+- *Ator: Usuário autenticado*
+
+- *Fluxo principal:*
+
+1. O usuário acessa a tela de “Adicionar Transação”.
+
+2. O usuário informa os dados da transação (valor, tipo, categoria, data, descrição).
+
+3. O usuário confirma o cadastro.
+
+4. O sistema valida e salva a transação no banco de dados.
+
+5. O sistema atualiza o saldo e a visão geral exibida no Dashboard.
+
+**UC03 – Acompanhar Meta Financeira**
+
+- *Ator: Usuário autenticado*
+
+- *Fluxo principal:*
+
+1. O usuário acessa a tela de “Metas Financeiras”.
+
+2. O usuário seleciona uma meta existente.
+
+3. O sistema exibe o progresso da meta com base nas transações cadastradas.
+
+4. O usuário visualiza o valor acumulado e o que ainda falta para alcançar o objetivo.
+
+5. O sistema atualiza automaticamente o progresso quando novas transações são registradas.
+
+---
+
+## 5. RASTREABILIDADE
+
+| ID Requisito | Caso de Uso |
+| ------------ | ----------- |
+| RF01         | UC01 – …    |
+| RF02         | UC02 – …    |
+| ...          | ...         |
