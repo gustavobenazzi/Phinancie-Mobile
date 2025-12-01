@@ -86,7 +86,7 @@ const DashboardScreen = () => {
 
         {/* Transactions Section - Group 289222 */}
         <View className="mx-6 mt-6 mb-24">
-          <TransactionsList />
+          <TransactionsList limit={3} />
         </View>
       </ScrollView>
 

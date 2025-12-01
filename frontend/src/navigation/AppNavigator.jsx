@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from '../screens/LoginScreen';
 import DashboardScreen from '../screens/DashboardScreen';
 import TransactionsScreen from '../screens/TransactionsScreen';
+import AddTransactionScreen from '../screens/AddTransactionScreen';
 import CategoriesScreen from '../screens/CategoriesScreen';
 import GoalsScreen from '../screens/GoalsScreen';
 import RegisterScreen from '../screens/RegisterScreen';
@@ -30,7 +31,12 @@ export default function AppNavigator() {
         <Stack.Screen
           name="Transactions"
           component={TransactionsScreen}
-          options={{ title: 'Transações' }}
+          options={{ title: 'Transações', headerShown: false }}
+        />
+        <Stack.Screen
+          name="AddTransaction"
+          component={AddTransactionScreen}
+          options={{ title: 'Adicionar Transação', headerShown: false }}
         />
         <Stack.Screen
           name="Categories"
