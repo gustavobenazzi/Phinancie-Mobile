@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { View, Text, ActivityIndicator } from 'react-native';
 import SalaryIcon from '../../assets/Salary.svg';
+import { useFocusEffect } from '@react-navigation/native';
 import useTransactionsTotals from '../hooks/useTransactionsTotals';
 
 const currencyFormatter = new Intl.NumberFormat('pt-BR', {
@@ -11,9 +12,17 @@ const currencyFormatter = new Intl.NumberFormat('pt-BR', {
 
 const SummaryCard = ({ totals: externalTotals, loading: externalLoading }) => {
   const shouldSkipFetch = typeof externalTotals !== 'undefined';
-  const { totals, loading } = useTransactionsTotals({ autoFetch: !shouldSkipFetch });
+  const { totals, loading, refreshTotals } = useTransactionsTotals({ autoFetch: !shouldSkipFetch });
   const data = shouldSkipFetch ? externalTotals || { income: 0, expense: 0 } : totals;
   const isLoading = shouldSkipFetch ? !!externalLoading : loading;
+
+  useFocusEffect(
+    useCallback(() => {
+      if (!shouldSkipFetch) {
+        refreshTotals();
+      }
+    }, [shouldSkipFetch, refreshTotals])
+  );
 
   const renderValue = (value) => currencyFormatter.format(value || 0);
 

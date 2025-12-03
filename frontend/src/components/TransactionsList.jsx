@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { View, Text, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
 import CarIcon from '../../assets/Car.svg';
 import FoodIcon from '../../assets/Food.svg';
 import SalaryIcon from '../../assets/Salary.svg';
@@ -12,11 +13,8 @@ const TransactionsList = ({ limit }) => {
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetchTransactions();
-  }, []);
-
-  const fetchTransactions = async () => {
+  const fetchTransactions = useCallback(async () => {
+    setLoading(true);
     try {
       const response = await api.get('/transactions');
       setTransactions(response.data.data);
@@ -25,7 +23,17 @@ const TransactionsList = ({ limit }) => {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    fetchTransactions();
+  }, [fetchTransactions]);
+
+  useFocusEffect(
+    useCallback(() => {
+      fetchTransactions();
+    }, [fetchTransactions])
+  );
 
   const displayedTransactions = limit ? transactions.slice(0, limit) : transactions;
 

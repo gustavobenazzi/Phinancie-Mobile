@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { View, Text, ScrollView } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
 
 // Components
 import Header from '../components/Header';
@@ -14,8 +15,14 @@ const currencyFormatter = new Intl.NumberFormat('pt-BR', {
 });
 
 const DashboardScreen = () => {
-  const { totals, loading } = useTransactionsTotals();
+  const { totals, loading, refreshTotals } = useTransactionsTotals();
   const renderValue = (value) => currencyFormatter.format(value || 0);
+
+  useFocusEffect(
+    useCallback(() => {
+      refreshTotals();
+    }, [refreshTotals])
+  );
 
   return (
     <View className="flex-1 bg-[#F5F5F5]">

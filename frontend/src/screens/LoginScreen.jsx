@@ -116,9 +116,11 @@ export default function LoginScreen() {
       <View className="flex-row justify-between items-center mb-4">
         <TouchableOpacity className="flex-row items-center" onPress={handleToggleRemember} activeOpacity={0.8}>
           <View
-            className={`w-5 h-5 rounded border flex items-center justify-center ${rememberLogin ? 'bg-blue-600 border-blue-600' : 'border-gray-400 bg-white'}`}
+            className={`px-2 py-1 rounded border flex items-center justify-center ${rememberLogin ? 'bg-blue-600 border-blue-600' : 'border-gray-400 bg-white'}`}
           >
-            {rememberLogin && <View className="w-3 h-3 bg-white rounded" />}
+            {rememberLogin ? (
+              <Text className="text-white text-[10px] font-semibold uppercase">confirmado</Text>
+            ) : null}
           </View>
           <Text className="ml-2 text-gray-700 font-medium">Lembrar login</Text>
         </TouchableOpacity>

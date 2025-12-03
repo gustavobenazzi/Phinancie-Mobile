@@ -13,7 +13,7 @@ export default function TransactionsScreen() {
   const [isFabOpen, setIsFabOpen] = useState(false);
   const tabBarHeight = useBottomTabBarHeight();
   const { bottom: insetBottom } = useSafeAreaInsets();
-  const FAB_BOTTOM = Math.max(tabBarHeight + insetBottom - 56, 32); // keep FAB just above tab bar
+  const FAB_BOTTOM = Math.max(tabBarHeight + insetBottom - 68, 24); // lowered FAB closer to tab bar
   const ACTIONS_BOTTOM = FAB_BOTTOM + 56;
 
   const toggleFab = () => {
@@ -47,11 +47,11 @@ export default function TransactionsScreen() {
           <TouchableOpacity 
             className="bg-white p-3 rounded-xl shadow-lg mb-3 flex-row items-center"
             onPress={() => {
-              console.log('Exportar extrato bancário');
+              navigation.navigate('StatementImport');
               setIsFabOpen(false);
             }}
           >
-            <Text className="font-medium text-gray-700">Exportar extrato bancário</Text>
+            <Text className="font-medium text-gray-700">Importar extrato (OFX)</Text>
           </TouchableOpacity>
         </View>
       )}

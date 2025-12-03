@@ -12,6 +12,7 @@ import CategoriesScreen from '../screens/CategoriesScreen';
 import GoalsScreen from '../screens/GoalsScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 import ForgotPasswordScreen from '../screens/ForgotPasswordScreen';
+import StatementImportScreen from '../screens/StatementImportScreen';
 import BottomTabBar from '../components/BottomTabBar';
 
 const Stack = createNativeStackNavigator();
@@ -65,6 +66,11 @@ export default function AppNavigator() {
           name="ForgotPassword"
           component={ForgotPasswordScreen}
           options={{ title: 'Recuperar senha' }}
+        />
+        <Stack.Screen
+          name="StatementImport"
+          component={StatementImportScreen}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>
