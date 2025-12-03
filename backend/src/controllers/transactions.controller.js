@@ -130,3 +130,14 @@ export async function deleteTransaction(req, res) {
     return res.status(500).json({ error: "erro interno" });
   }
 }
+
+export async function deleteAllTransactions(req, res) {
+  try {
+    const userId = req.user.id;
+    const result = await prisma.transaction.deleteMany({ where: { userId } });
+    return res.json({ data: { deleted: result.count } });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "erro interno" });
+  }
+}

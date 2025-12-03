@@ -102,3 +102,14 @@ export async function deleteCategory(req, res) {
     return res.status(500).json({ error: "Erro interno ao deletar categoria" });
   }
 }
+
+export async function deleteAllCategories(req, res) {
+  try {
+    const userId = req.user.id;
+    const result = await prisma.category.deleteMany({ where: { userId } });
+    return res.json({ data: { deleted: result.count } });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Erro interno ao deletar categorias" });
+  }
+}

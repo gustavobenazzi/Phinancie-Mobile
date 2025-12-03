@@ -13,6 +13,7 @@ import GoalsScreen from '../screens/GoalsScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 import ForgotPasswordScreen from '../screens/ForgotPasswordScreen';
 import StatementImportScreen from '../screens/StatementImportScreen';
+import SettingsScreen from '../screens/SettingsScreen';
 import BottomTabBar from '../components/BottomTabBar';
 
 const Stack = createNativeStackNavigator();
@@ -25,6 +26,7 @@ const MainTabs = () => (
   >
     <Tab.Screen name="Dashboard" component={DashboardScreen} />
     <Tab.Screen name="Transactions" component={TransactionsScreen} />
+    <Tab.Screen name="Settings" component={SettingsScreen} />
   </Tab.Navigator>
 );
 

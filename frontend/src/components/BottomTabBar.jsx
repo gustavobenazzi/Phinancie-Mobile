@@ -28,8 +28,8 @@ const BottomTabBar = ({ state, navigation }) => {
         <TouchableOpacity className="items-center p-3" onPress={() => handleNavigate('Transactions')}>
           <TaskSquareIcon width={28} height={28} color={getIconColor('Transactions')} />
         </TouchableOpacity>
-        <TouchableOpacity className="items-center p-3">
-          <SettingIcon width={28} height={28} color="#A3A3A3" />
+        <TouchableOpacity className="items-center p-3" onPress={() => handleNavigate('Settings')}>
+          <SettingIcon width={28} height={28} color={getIconColor('Settings')} stroke={getIconColor('Settings')} />
         </TouchableOpacity>
       </View>
     </View>
