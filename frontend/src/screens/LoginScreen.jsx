@@ -4,6 +4,9 @@ import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import api from '../services/api';
 import FormScreen from '../components/FormScreen';
+import CheckIcon from '../../assets/Check.svg';
+
+const PRIMARY_GREEN = '#00D09E';
 
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
@@ -116,11 +119,9 @@ export default function LoginScreen() {
       <View className="flex-row justify-between items-center mb-4">
         <TouchableOpacity className="flex-row items-center" onPress={handleToggleRemember} activeOpacity={0.8}>
           <View
-            className={`px-2 py-1 rounded border flex items-center justify-center ${rememberLogin ? 'bg-blue-600 border-blue-600' : 'border-gray-400 bg-white'}`}
+            className={`w-7 h-7 rounded border flex items-center justify-center ${rememberLogin ? 'border-[#00D09E] bg-white' : 'border-gray-400 bg-white'}`}
           >
-            {rememberLogin ? (
-              <Text className="text-white text-[10px] font-semibold uppercase">confirmado</Text>
-            ) : null}
+            {rememberLogin ? <CheckIcon width={16} height={16} color={PRIMARY_GREEN} /> : null}
           </View>
           <Text className="ml-2 text-gray-700 font-medium">Lembrar login</Text>
         </TouchableOpacity>
@@ -131,7 +132,7 @@ export default function LoginScreen() {
       </View>
 
       <TouchableOpacity
-        className={`p-4 rounded-lg items-center ${loading ? 'bg-gray-400' : 'bg-blue-600'}`}
+        className={`p-4 rounded-lg items-center ${loading ? 'bg-gray-400' : 'bg-[#00D09E]'}`}
         onPress={handleLogin}
         disabled={loading}
       >

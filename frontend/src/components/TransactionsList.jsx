@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { View, Text, TouchableOpacity, ActivityIndicator, Modal, ScrollView } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
+import BagIcon from '../../assets/Bag.svg';
+import MoneyIcon from '../../assets/Money.svg';
+import PharmacyIcon from '../../assets/Pharmacy.svg';
+import BurgerIcon from '../../assets/Burger.svg';
 import CarIcon from '../../assets/Car.svg';
 import FoodIcon from '../../assets/Food.svg';
 import SalaryIcon from '../../assets/Salary.svg';
@@ -139,6 +143,10 @@ const TransactionsList = ({ limit }) => {
   const displayedTransactions = limit ? sortedTransactions.slice(0, limit) : sortedTransactions;
 
   const ICON_MAP = {
+    Bag: BagIcon,
+    Money: MoneyIcon,
+    Pharmacy: PharmacyIcon,
+    Burger: BurgerIcon,
     Car: CarIcon,
     Food: FoodIcon,
     Salary: SalaryIcon,
@@ -148,7 +156,7 @@ const TransactionsList = ({ limit }) => {
 
   const renderIcon = (category) => {
     const iconKey = category?.icon;
-    const IconComponent = (iconKey && ICON_MAP[iconKey]) || ICON_MAP[category?.name] || FoodIcon;
+    const IconComponent = (iconKey && ICON_MAP[iconKey]) || ICON_MAP[category?.name] || BagIcon;
     return <IconComponent width={24} height={24} color="#F1FFF3" />;
   };
 

@@ -13,7 +13,7 @@ export default function TransactionsScreen() {
   const [isFabOpen, setIsFabOpen] = useState(false);
   const tabBarHeight = useBottomTabBarHeight();
   const { bottom: insetBottom } = useSafeAreaInsets();
-  const FAB_BOTTOM = Math.max(tabBarHeight + insetBottom - 68, 24); // lowered FAB closer to tab bar
+  const FAB_BOTTOM = Math.max(tabBarHeight + insetBottom - 84, 16); // lowered FAB closer to tab bar
   const ACTIONS_BOTTOM = FAB_BOTTOM + 56;
 
   const toggleFab = () => {

@@ -3,23 +3,36 @@ import { View, Text, TextInput, TouchableOpacity, ScrollView, Alert, Modal, Flat
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import api from '../services/api';
-import ArrowLeftIcon from '../../assets/Vector-1.svg'; 
 import PlusIcon from '../../assets/Plus.svg';
 
 // Import available icons
+import BagIcon from '../../assets/Bag.svg';
+import MoneyIcon from '../../assets/Money.svg';
+import PharmacyIcon from '../../assets/Pharmacy.svg';
+import BurgerIcon from '../../assets/Burger.svg';
 import CarIcon from '../../assets/Car.svg';
-import FoodIcon from '../../assets/Food.svg';
-import SalaryIcon from '../../assets/Salary.svg';
 import HomeIcon from '../../assets/Home.svg';
 import MoreIcon from '../../assets/More.svg';
 
 const AVAILABLE_ICONS = [
+  { name: 'Bag', component: BagIcon },
+  { name: 'Money', component: MoneyIcon },
+  { name: 'Pharmacy', component: PharmacyIcon },
+  { name: 'Burger', component: BurgerIcon },
   { name: 'Car', component: CarIcon },
-  { name: 'Food', component: FoodIcon },
-  { name: 'Salary', component: SalaryIcon },
-  { name: 'Home', component: HomeIcon },
-  { name: 'More', component: MoreIcon },
 ];
+
+const ICON_COMPONENTS = {
+  Bag: BagIcon,
+  Money: MoneyIcon,
+  Pharmacy: PharmacyIcon,
+  Burger: BurgerIcon,
+  Car: CarIcon,
+  Food: BurgerIcon,
+  Salary: MoneyIcon,
+  Home: HomeIcon,
+  More: MoreIcon,
+};
 
 export default function AddTransactionScreen() {
   const navigation = useNavigation();
@@ -35,7 +48,7 @@ export default function AddTransactionScreen() {
   // Category Modal State
   const [isCategoryModalVisible, setCategoryModalVisible] = useState(false);
   const [newCategoryName, setNewCategoryName] = useState('');
-  const [selectedIcon, setSelectedIcon] = useState('More'); // Default icon
+  const [selectedIcon, setSelectedIcon] = useState('Bag'); // Default icon
   const [editingCategory, setEditingCategory] = useState(null);
 
   useEffect(() => {
@@ -104,7 +117,7 @@ export default function AddTransactionScreen() {
         });
       }
       setNewCategoryName('');
-      setSelectedIcon('More');
+      setSelectedIcon('Bag');
       fetchCategories();
     } catch (error) {
       console.error(error);
@@ -114,7 +127,7 @@ export default function AddTransactionScreen() {
 
   const handleEditCategory = (category) => {
     setNewCategoryName(category.name);
-    setSelectedIcon(category.icon || 'More');
+    setSelectedIcon(category.icon || 'Bag');
     setEditingCategory(category);
   };
 
@@ -129,17 +142,20 @@ export default function AddTransactionScreen() {
   };
 
   const renderIcon = (iconName, size = 24, color = "#000") => {
-    const IconComponent = AVAILABLE_ICONS.find(i => i.name === iconName)?.component || MoreIcon;
+    const IconComponent = ICON_COMPONENTS[iconName] || BagIcon;
     return <IconComponent width={size} height={size} color={color} />;
   };
 
   return (
     <SafeAreaView className="flex-1 bg-[#F5F5F5]">
       <View className="flex-row items-center px-4 py-4 bg-white border-b border-gray-200">
-        <TouchableOpacity onPress={() => navigation.goBack()} className="p-2">
-          <ArrowLeftIcon width={24} height={24} color="black" />
+        <TouchableOpacity onPress={() => navigation.goBack()} className="p-2" activeOpacity={0.8}>
+          <Text className="text-base font-semibold text-gray-800">{'< Voltar'}</Text>
         </TouchableOpacity>
-        <Text className="text-lg font-semibold ml-4">Adicionar Transação</Text>
+        <View className="flex-1 items-center">
+          <Text className="text-lg font-semibold text-[#052224]">Adicionar Transação</Text>
+        </View>
+        <View className="w-10" />
       </View>
 
       <ScrollView className="p-6">
@@ -265,10 +281,12 @@ export default function AddTransactionScreen() {
                 {AVAILABLE_ICONS.map((icon) => (
                   <TouchableOpacity
                     key={icon.name}
-                    className={`p-2 mr-2 mb-2 rounded-full ${selectedIcon === icon.name ? 'bg-[#00D09E]' : 'bg-gray-100'}`}
+                    className={`p-3 mr-2 mb-2 rounded-full border ${
+                      selectedIcon === icon.name ? 'bg-[#00D09E] border-[#00A77C]' : 'bg-white border-gray-300'
+                    }`}
                     onPress={() => setSelectedIcon(icon.name)}
                   >
-                    <icon.component width={24} height={24} color={selectedIcon === icon.name ? '#FFF' : '#A3A3A3'} />
+                    {renderIcon(icon.name, 24, '#000000')}
                   </TouchableOpacity>
                 ))}
               </View>

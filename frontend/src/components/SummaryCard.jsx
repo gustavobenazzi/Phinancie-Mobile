@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { View, Text, ActivityIndicator } from 'react-native';
-import SalaryIcon from '../../assets/Salary.svg';
+import MoneyIcon from '../../assets/Money.svg';
 import { useFocusEffect } from '@react-navigation/native';
 import useTransactionsTotals from '../hooks/useTransactionsTotals';
 
@@ -34,7 +34,7 @@ const SummaryCard = ({ totals: externalTotals, loading: externalLoading }) => {
         <View>
           <View className="flex-row items-center">
             <View className="w-14 h-14 rounded-2xl bg-white/10 items-center justify-center mr-4">
-              <SalaryIcon width={28} height={28} color="#4CAF50" />
+              <MoneyIcon width={28} height={28} color="#4CAF50" />
             </View>
             <View className="flex-1">
               <Text className="text-white opacity-80 text-xs font-medium">Receita</Text>
@@ -48,7 +48,7 @@ const SummaryCard = ({ totals: externalTotals, loading: externalLoading }) => {
 
           <View className="flex-row items-center">
             <View className="w-14 h-14 rounded-2xl bg-white/10 items-center justify-center mr-4">
-              <SalaryIcon width={28} height={28} color="#FF5252" />
+              <MoneyIcon width={28} height={28} color="#FF5252" />
             </View>
             <View className="flex-1">
               <Text className="text-white opacity-80 text-xs font-medium">Despesas</Text>
