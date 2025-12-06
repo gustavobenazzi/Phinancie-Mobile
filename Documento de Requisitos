@@ -42,8 +42,8 @@ Software: Backend em Node.js; Frontend em React-Native; Banco de dados relaciona
 ### 3.1 Requisitos Funcionais (RF)
 
 RF-01: Registro Automatizado de Transações.RF-02: Organização por Categorias.
-RF-03: Visualização de Relatórios e Gráficos.
-RF-04: Definição e Monitoramento de Orçamentos/Metas.
+RF-02: Visualização de Relatórios e Gráficos.
+RF-03: Definição e Monitoramento de Orçamentos/Metas.
 
 ### 3.2 Requisitos Não Funcionais (RNF)
 
@@ -111,4 +111,4 @@ RNF-05: Código modular com documentação; uso de Git para versionamento.
 | ------------ | ----------- |
 | RF01         | UC01 – …    |
 | RF02         | UC02 – …    |
-| ...          | ...         |
+| RF03         | UC03        |
