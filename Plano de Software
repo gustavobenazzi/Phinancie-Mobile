@@ -1,0 +1,244 @@
+# 📒 PLANO DE SOFTWARE
+
+O **Plano de Software** (PS) tem como propósito organizar e orientar o desenvolvimento do projeto, definindo visão, objetivos, escopo, equipe, cronograma e processos a serem seguidos. Ele funciona como guia de referência para garantir alinhamento entre os membros da equipe, rastreabilidade das atividades e evolução estruturada do software ao longo de seu ciclo de vida.
+
+## 📋 IDENTIFICAÇÃO DO PROJETO
+
+- **Nome do projeto:** Nome do projeto
+- **Equipe:**
+  - Fernando Vassoler Nunes(_Líder_)
+  - Amanda Lais Gerhard
+  - Gabriel Adolf Worm
+  - Gustavo Matos Benazzi
+  - Muryllo Teixeira
+  - Suziane Marques
+
+* **Repositório Git:** https://github.com/gustavobenazzi/Phinancie-Mobile
+* **Data de início:** 04 de agosto de 2025
+* **Previsão de término:** 08 de dezembro de 2025
+* **Versão do PS:** v2025.08.18
+
+---
+
+## ⭐ INTRODUÇÃO
+
+### Contexto
+
+A crescente complexidade da vida financeira moderna exige maior organização, controle e análise.
+Apesar disso, muitas pessoas ainda dependem de métodos manuais — como planilhas, blocos de notas ou simples anotações — para administrar seu dinheiro.
+Esses métodos se mostram ineficientes, trabalhosos e propensos a erros. Dessa forma, a distância entre o desejo de controlar as finanças e a prática diária é grande,
+resultando em falta de clareza, más decisões financeiras e dificuldade em atingir metas pessoais.
+
+Ao mesmo tempo, o mercado de aplicativos financeiros cresce, com soluções consolidadas como Organizze,
+Minhas Economias e outros. Esses competidores oferecem recursos variados, como importação de extratos e categorização básica.
+Porém, ainda há espaço para inovação, principalmente em aspectos como automação mais robusta, extração de dados mais precisa,
+categorização inteligente, análises acionáveis e uma experiência de uso simplificada e intuitiva.
+
+Nesse cenário, surge a proposta do Phinancie, um aplicativo moderno de gestão financeira pessoal com backend em Node.js/Express/Prisma e frontend em React Native. 
+O objetivo é criar uma solução que una tecnologia, acessibilidade e inteligência, ajudando o usuário a ter controle real sobre suas finanças.
+
+### Problema
+
+O principal problema enfrentado atualmente pelos usuários é a dificuldade em manter um controle financeiro consistente, organizado e confiável.
+A gestão manual de receitas e despesas é:
+- Trabalhosa, exigindo registros constantes e categorização manual;
+- Propensa a erros, o que compromete a precisão das informações e dificulta a tomada de decisões;
+- Desmotivadora, pois exige disciplina contínua e não oferece retorno imediato em forma de insights;
+- Limitada, já que não fornece análises inteligentes ou recomendações úteis sobre hábitos financeiros.
+
+Essas dificuldades causam uma lacuna entre a intenção de controlar as finanças e o comportamento real do usuário,
+prejudicando a construção de patrimônio, a organização financeira e a conquista de metas.
+Além disso, mesmo os concorrentes do mercado nem sempre oferecem soluções verdadeiramente eficientes, inteligentes e acessíveis,
+abrindo espaço para uma proposta que una automação de qualidade com análise e interface moderna.
+
+### Objetivos
+
+#### Objetivo geral
+
+Desenvolver uma ferramenta de gestão financeira pessoal intuitiva, eficiente e segura, capaz de fornecer ao usuário controle total sobre suas finanças por meio de automação,
+categorização inteligente, análises claras e recursos que auxiliem na tomada de decisões mais informadas.
+
+#### Objetivos específicos
+
+- Automatizar o registro de receitas e despesas, reduzindo a necessidade de inserção manual.
+- Categorizar transações de forma inteligente, garantindo maior acurácia e clareza.
+- Oferecer relatórios visuais, gráficos e análises para facilitar o entendimento do fluxo de caixa.
+- Permitir ao usuário definir orçamentos e acompanhar seu cumprimento ao longo do tempo.
+- Fornecer recursos para criar, acompanhar e alcançar metas financeiras.
+- Disponibilizar ferramentas de conciliação bancária e integração com Open Finance.
+- Garantir uma interface (UI) moderna, simples e acessível aliada a uma experiência do usuário (UX) fluida.
+- Construir uma API segura, escalável e com criptografia para proteção de dados sensíveis.
+- Implementar funcionalidades de analytics para gerar insights acionáveis sobre o comportamento financeiro do usuário.
+
+### Público-alvo
+
+*Usuários comuns que desejam organizar suas finanças pessoais:*
+Pessoas que precisam controlar gastos, entender para onde vai seu dinheiro e planejar metas como viagens, compras, investimentos ou quitação de dívidas.
+
+*Profissionais e estudantes:*
+Usuários com agendas cheias, que buscam uma solução eficiente e automatizada para acompanhar receitas e despesas sem depender de processos manuais demorados.
+
+*Usuários com dificuldade de disciplina financeira:*
+Pessoas que precisam de ferramentas que incentivem hábitos saudáveis de controle, com feedback visual, alertas e automação que simplifique o processo.
+
+*Público interessado em investimentos e patrimônio:*
+Indivíduos que desejam acompanhar evolução de ativos, passivos, patrimônio líquido e fluxo de caixa mês a mês.
+
+*Impacto no público*
+
+O sistema melhora a clareza financeira, auxilia na tomada de decisões, reduz erros, facilita o acompanhamento de metas e promove maior organização e segurança.
+Com isso, o usuário ganha autonomia, previsibilidade e tranquilidade sobre sua vida financeira.
+---
+
+## 🏗️ ESCOPO
+
+<h6 style="color: red;">AULA 04</h6>
+
+**📌 O detalhamento completo dos requisitos pode ser encontrado no [Documento de Requisitos (DR)](https://www.example.com/).**
+
+### Resumo
+
+Descrever em poucas linhas o que o sistema faz, sem entrar em detalhes técnicos. Deve ser independente do DR, mas complementar.
+
+### Principais funcionalidades
+
+Listar de 5 a 10 funcionalidades principais, resumidas em uma frase cada.
+
+### Restrições / Limitações
+
+Indicar limitações tecnológicas, de prazo ou de escopo.
+
+### Fora do escopo
+
+Indicar funcionalidades que não serão desenvolvidas neste projeto.
+
+---
+
+## 🤝 ORGANIZAÇÃO E PAPÉIS
+
+### Papéis da equipe de desenvolvimento
+
+#### Papel (ex.: Desenvolvedor)
+
+- **Desempenhado por:** Integrante da equipe
+- **Principais atribuições:**
+  - Atribuição
+  - Atribuição
+  - ...
+
+### Estrutura de trabalho
+
+#### Divisões
+
+Existem subgrupos de trabalho? Se sim, detalhar as responsabilidades específicas desses subgrupos.
+
+#### Comunicação interna
+
+##### Canais utilizados para comunicação:
+
+- Reuniões realizadas via Discord
+- Alinhamentos pontuais realizados via WhatsApp
+- ...
+
+##### Reuniões e periodicidade
+
+- **Reunião (ex.: Reunião de planejamento):** Com o objetivo de [objetivo] será realizada à cada [período de tempo]
+
+#### Distribuição de tarefas
+
+Descrever como as tarefas são priorizadas e atribuídas.
+
+#### Documentação e rastreabilidade
+
+Descrever como os documentos serão mantidos atualizados, como o repositório será organizado, e como evidências serão registradas.
+
+#### Integração de feedbacks
+
+Descrever como os feedbacks recebidos em sala serão integrados ao projeto.
+
+#### Coordenação de entregas parciais
+
+Quem é responsável pelo acompanhamento de prazos e garantia das entregas parciais? Como isso será feito?
+
+---
+
+## 💻 PROCESSO DE DESENVOLVIMENTO
+
+### Processo ágil
+
+<h6 style="color: red;">AULA 08</h6>
+
+Descrever qual é/será o processo ágil implementado e de que maneira ele é/será implementado.
+
+### Definição de pronto (DoD)
+
+Explicar quais critérios devem ser atendidos para considerar uma tarefa ou funcionalidade concluída.
+
+---
+
+## 🗓️ CRONOGRAMA
+
+Detalhar o cronograma do projeto utilizando ferramentas visuais de preferência da equipe.
+
+---
+
+## ⚙️ GESTÃO DE CONFIGURAÇÃO
+
+### Estratégia de branches
+
+- Definir os tipos de branches que serão utilizadas
+- Estabelecer regras para criação e mesclagem de branches
+- Explicar como as branches refletem o ciclo de desenvolvimento e integração contínua
+
+### Política de commits
+
+- Definir o padrão de mensagem a ser seguido
+- Estabelecer a frequência esperada de commits
+- Explicar como os commits serão relacionados a tarefas para rastreabilidade
+
+### Gestão de mudanças
+
+- Explicar como alterações de requisitos serão registradas e aprovadas
+- Indicar como atualizar o Kanban e demais documentos quando houver mudanças
+- Definir como lidar com ajustes de prioridades ou escopo ao longo do projeto
+
+---
+
+## ☑️ GARANTIA DA QUALIDADE
+
+<h6 style="color: red;">AULA 05</h6>
+
+O detalhamento completo de como será realizada a gestão de qualidade do projeto pode ser encontrado no [Plano de Garantia de Qualidade de Software (PGQS)](https://www.example.com/).
+
+---
+
+## 📐 ARQUITETURA
+
+<h6 style="color: red;">AULA 07</h6>
+
+O detalhamento completo da arquitetura do projeto pode ser encontrado no [Documento de Arquitetura de Software (DAS)](https://www.example.com/).
+
+---
+
+## ☠️ RISCOS E MITIGAÇÕES
+
+Listar riscos reais ou potenciais e ações práticas que serão aplicadas para mitigá-los.
+
+| Risco                        | Probabilidade                | Impacto                       | Ação de mitigação            |
+| ---------------------------- | ---------------------------- | ----------------------------- | ---------------------------- |
+| Risco                        | 🟥Alta / 🟨 Média / 🟩 Baixa | 🟥 Alto / 🟨 Médio / 🟩 Baixo | Ação                         |
+| Bugs críticos não detectados | 🟨 Média                     | 🟥 Alto                       | Revisões de código regulares |
+
+---
+
+## 🗂️ RECURSOS
+
+### Hardware/ambiente
+
+Detalhar os recursos de hardware e/ou ambiente que serão utilizados para desenvolvimento do projeto.
+
+### Softwares/ferramentas
+
+Detalhar os recursos de software e/ou ferramentas que serão utilizados para desenvolvimento do projeto.
+
+---
