@@ -14,11 +14,14 @@ phinancie-mobile/
 
 ## Funcionalidades
 
-- **Autenticação**: Login, registro e recuperação de senha
-- **Transações**: Registro de receitas e despesas
-- **Categorias**: Organização das transações por categoria
-- **Metas Financeiras**: Definição e acompanhamento de objetivos financeiros
-- **Dashboard**: Visão geral das finanças
+- **Autenticação completa**: Login/registro, recuperação de senha, opção de “lembrar login” com sincronização segura no dispositivo.
+- **Dashboard e resumo**: Cards de resumo com totais de receita/despesa atualizados em tempo real e ícones customizados.
+- **Transações manuais**: Formulário para registrar receitas e despesas com data, hora, estabelecimento, seleção/edição de categorias e ícones personalizados.
+- **Importação de extratos bancários**: Upload de arquivos OFX/QFX (e perfis CSV suportados no backend) com análise automática, pré-visualização e seleção de lançamentos antes de salvar.
+- **Filtros avançados**: Lista de transações com filtros por período (dia, semana, mês), categoria, ordenação por data/valor e destaques visuais por tipo de operação.
+- **Gestão de categorias**: CRUD completo, escolha de ícones (carro, mercado, farmácia, etc.), edição e exclusão diretamente pelo app.
+- **Configurações e limpeza de dados**: Tela dedicada para sair da sessão, limpar todas as transações ou categorias e manter o app organizado.
+- **Validações e alertas**: Feedback amigável via modais/alerts para importação, erros de rede e confirmações de ações sensíveis.
 
 ## Tecnologias
 
@@ -78,6 +81,16 @@ npm install
 npm start
 ```
 
+3. Verificar qualidade do código (ESLint):
+```bash
+cd frontend
+npm run lint # ou npx eslint .
+```
+
+## Qualidade de Código
+
+O projeto utiliza ESLint (configuração compatível com React Native) para garantir padrão de código. Execute `npm run lint` no diretório `frontend` antes de fazer deploy.
+
 ## API Endpoints
 
 ### Autenticação
@@ -119,14 +132,6 @@ O projeto segue boas práticas de desenvolvimento:
 - Validação de dados
 - Tratamento de erros
 - Estrutura modular
-
-## Contribuição
-
-1. Fork o projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/nova-feature`)
-3. Commit suas mudanças (`git commit -am 'Adiciona nova feature'`)
-4. Push para a branch (`git push origin feature/nova-feature`)
-5. Abra um Pull Request
 
 ## Licença
 
