@@ -94,23 +94,57 @@ Com isso, o usuário ganha autonomia, previsibilidade e tranquilidade sobre sua 
 
 <h6 style="color: red;">AULA 04</h6>
 
-**📌 O detalhamento completo dos requisitos pode ser encontrado no [Documento de Requisitos (DR)](https://www.example.com/).**
+**📌 O detalhamento completo dos requisitos pode ser encontrado no [Documento de Requisitos (DR)] (https://github.com/gustavobenazzi/Phinancie-Mobile/blob/main/Documento%20de%20Requisitos).**
 
 ### Resumo
 
-Descrever em poucas linhas o que o sistema faz, sem entrar em detalhes técnicos. Deve ser independente do DR, mas complementar.
+O sistema é um aplicativo de gestão financeira pessoal que ajuda o usuário a entender,
+organizar e controlar melhor suas finanças. Ele permite registrar e acompanhar receitas e despesas,
+visualizar gráficos e relatórios, definir orçamentos e metas e obter uma visão clara do fluxo de caixa e do patrimônio.
+Seu propósito é simplificar o controle financeiro e apoiar decisões mais conscientes no dia a dia.
 
 ### Principais funcionalidades
 
-Listar de 5 a 10 funcionalidades principais, resumidas em uma frase cada.
+1. Registro automático de receitas e despesas a partir de importações ou integrações bancárias.
+2. Categorização inteligente de transações, facilitando a organização dos gastos.
+3. Visualização de gráficos e relatórios, mostrando fluxo de caixa e padrões financeiros.
+4. Definição e acompanhamento de orçamentos, com alertas de limite.
+5. Criação e monitoramento de metas financeiras, como economizar ou quitar dívidas.
+6. Resumo financeiro mensal, destacando gastos, sobras e principais categorias.
+7. Controle de patrimônio, incluindo ativos, passivos e evolução do patrimônio líquido.
+8. Gestão de dívidas, acompanhando saldos, parcelas e vencimentos.
+9. Conciliação bancária, garantindo que os registros estejam alinhados com extratos reais.
+10.Dashboard intuitivo, oferecendo visão geral completa da situação financeira do usuário.
+
 
 ### Restrições / Limitações
 
-Indicar limitações tecnológicas, de prazo ou de escopo.
+*Limitações Tecnológicas*
+
+- Dependência de integrações bancárias e Open Finance, que podem variar em disponibilidade e precisão conforme cada instituição.
+- Algoritmos de categorização automática podem apresentar margem de erro e exigir ajustes ao longo do tempo.
+- Sincronização de grande volume de dados pode impactar performance em dispositivos menos potentes.
+- Requer conexão estável à internet para atualização de transações e sincronização com o servidor.
+
+*Limitações de Prazo*
+
+- Implementar automação completa (importação, categorização inteligente, conciliação) pode demandar várias fases de desenvolvimento.
+- Funcionalidades avançadas, como análises preditivas e integração total com Open Finance, podem ficar para versões futuras.
+- Criação de um design refinado e UX totalmente otimizada exige ciclos adicionais de teste e validação com usuários.
+
+*Limitações de Escopo*
+
+- A primeira versão (MVP) pode não incluir todas as funcionalidades de investimentos, patrimônio e relatórios detalhados.
+- O sistema não substituirá assessoria financeira profissional, oferecendo apenas apoio organizacional e analítico.
+- A automação pode não cobrir 100% das instituições bancárias ou tipos de extrato.
+- O aplicativo não realizará operações financeiras (transferências, pagamentos), apenas registro e análise.
 
 ### Fora do escopo
 
-Indicar funcionalidades que não serão desenvolvidas neste projeto.
+- Criação de dashboards inteligentes, mostrando que para dashboard pode ser um papel secundário e cabe como uma melhoria do projeto proposto.
+- Integração com bancos, muito dificil e trabalhosa de ser realizada, além de requisitar uma alta segurança no aplicativo, ficando envial sua interação.
+- Fotos de extratos, as fotos de extratos para facilitar na inclusão de débitos pode atrasar no planejamento do proejto devido a alta complexidade
+e dificuldade na leitura de dados em fotos.
 
 ---
 
@@ -118,19 +152,59 @@ Indicar funcionalidades que não serão desenvolvidas neste projeto.
 
 ### Papéis da equipe de desenvolvimento
 
-#### Papel (ex.: Desenvolvedor)
+#### Papel Desenvolvedor
 
-- **Desempenhado por:** Integrante da equipe
+- **Desempenhado por:** Gabriel Worm,Gustavo Benazzi
 - **Principais atribuições:**
-  - Atribuição
-  - Atribuição
-  - ...
+  - Desenvolvimento do projeto em nível de código.
+  - Implementar funcionalidades conforme requisitos definidos.
+  - Realizar testes unitários e de integração.
+  - Verificar integridade, qualidade e aderência do código aos padrões.
+  - Corrigir bugs e otimizar desempenho.
+  - Participar de revisões técnicas e code reviews.
+
+#### Papel Product Owner (PO)
+
+- **Desempenhado por:** Fernando Vassoler
+- **Principais atribuições:**
+  - Definir a visão do produto e garantir alinhamento com os objetivos do projeto.
+  - Priorizar funcionalidades no backlog com base em valor de negócio.
+  - Especificar e detalhar requisitos, regras de negócio e critérios de aceitação.
+  - Alinhar expectativas entre stakeholders e equipe técnica.
+  - Validar entregas e garantir que o produto atenda às necessidades do usuário
+
+#### Papel Quality Assurance (QA)
+
+- **Desempenhado por:** Gustavo Benazzi
+- **Principais atribuições:**
+  - Criar e executar planos de teste (funcionais, regressão, integração e usabilidade).
+  - Garantir que o sistema esteja de acordo com os requisitos e funcionando corretamente.
+  - Identificar, registrar e acompanhar defeitos encontrados.
+  - Realizar testes manuais e apoiar na automação de testes.
+  - Validar correções e colaborar com o Dev para garantir qualidade contínua.
+
+#### Papel Analista de Documentação
+
+- **Desempenhado por:** Amanda Lais, Suziane Marques, Muryllo Teixeira
+- **Principais atribuições:**
+  - Criar, organizar e atualizar toda a documentação do projeto (técnica e funcional).
+  - Elaborar especificações, diagramas, manuais e atas de reunião.
+  - Garantir que o material esteja claro, padronizado e acessível à equipe.
+  - Documentar mudanças e novas funcionalidades.
+  - Auxiliar o PO e o Dev na tradução de requisitos em materiais formais.
+
+#### Papel Lider de Projeto
+
+- **Desempenhado por:** Fernando Vassoler
+- **Principais atribuições:**
+  - Coordenar e supervisionar todas as atividades do projeto, garantindo alinhamento entre equipe, prazos e metas.
+  - Facilitar a comunicação entre Dev, PO, QA, Documentação e demais envolvidos.
+  - Auxiliar na remoção de impedimentos que possam prejudicar o andamento do desenvolvimento.
+  - Acompanhar o progresso geral do projeto e garantir que as entregas sigam o planejado.
+  - Promover boas práticas, organização, disciplina e melhoria contínua dentro da equipe.
+  - Tomar decisões estratégicas com base na visão do produto e nas necessidades do projeto.
 
 ### Estrutura de trabalho
-
-#### Divisões
-
-Existem subgrupos de trabalho? Se sim, detalhar as responsabilidades específicas desses subgrupos.
 
 #### Comunicação interna
 
@@ -138,28 +212,35 @@ Existem subgrupos de trabalho? Se sim, detalhar as responsabilidades específica
 
 - Reuniões realizadas via Discord
 - Alinhamentos pontuais realizados via WhatsApp
-- ...
+- Code Review realizada presencialmente em aula.
 
 ##### Reuniões e periodicidade
 
-- **Reunião (ex.: Reunião de planejamento):** Com o objetivo de [objetivo] será realizada à cada [período de tempo]
+- **Reunião de Planejamento:** Com o objetivo de verificar andamento do projeto será realizada à cada 1 mês.
+- **Reunião de Alinhamento:** Com o objetivo de alinhar tarefas realizadas, será realizada à cada 1 semana.
+- **Reunião de Organização:** Com o objetivo de organizar tarefas, responsábilidades e dificuldade durante o projeto, será realizada à cada 1 mês.
 
 #### Distribuição de tarefas
 
-Descrever como as tarefas são priorizadas e atribuídas.
+As tarefas serão distribuidas conforme a facilidade de cada integrante do projeto em realizar a operação.
+Sendo identificados pontos fortes e fracos de cada um, sendo entregue uma tarefa que possibilite o integrante de 
+concluir sem necessitar de auxilio.
 
 #### Documentação e rastreabilidade
 
-Descrever como os documentos serão mantidos atualizados, como o repositório será organizado, e como evidências serão registradas.
+Os Documentos serão adicionados em notion e no github, para poder identificar quando cada documento
+esta sendo realizado.
 
 #### Integração de feedbacks
 
-Descrever como os feedbacks recebidos em sala serão integrados ao projeto.
+Os feedbacks poderão ser alinhados através do notion, com uma documentação especifica para o mesmo, permitindo que o grupo
+acesse e consiga verificar o que pode ser feito e melhorado.
 
 #### Coordenação de entregas parciais
 
-Quem é responsável pelo acompanhamento de prazos e garantia das entregas parciais? Como isso será feito?
-
+Os responsável pelas entregas será o Lider do projeto Fernando Vassoler, vai utilizar o excel com um planilha,
+definindo a tarefas e data de realização estimada, e realização rea. Para validar a entrega e realização das tarefas
+de desenvolvimento vai ser utilizado o trello para o acompanhamento.
 ---
 
 ## 💻 PROCESSO DE DESENVOLVIMENTO
@@ -168,13 +249,25 @@ Quem é responsável pelo acompanhamento de prazos e garantia das entregas parci
 
 <h6 style="color: red;">AULA 08</h6>
 
-Descrever qual é/será o processo ágil implementado e de que maneira ele é/será implementado.
+No projeto o processo ágil utilizado foi o KABAN, por utilizar quadros vizuais para gerenciar o fluxo de tarefa e identificar erros.
+
 
 ### Definição de pronto (DoD)
 
-Explicar quais critérios devem ser atendidos para considerar uma tarefa ou funcionalidade concluída.
+Uma tarefa ou funcionalidade só é considerada concluída quando atender a todos os seguintes critérios:
 
----
+1. Código implementado conforme requisitos definidos e boas práticas de desenvolvimento.
+2. Testes realizados (unitários, integração e/ou funcionais, conforme aplicável) e todos aprovados.
+3. Nenhum bug crítico ou bloqueante presente na funcionalidade.
+4. Validação do QA concluída e registrada.
+5. Documentação atualizada, incluindo descrição da funcionalidade, regras de negócio e instruções de uso, quando necessário.
+6. Critérios de aceitação do PO atendidos e aprovados.
+7. Integração com outras partes do sistema verificada e funcionando corretamente.
+8. Interface e fluxo do usuário alinhados ao design definido (UI/UX).
+9. Código revisado por pelo menos outro desenvolvedor (code review).
+10. Versão estável entregue no repositório, com commit padronizado e merges realizados corretamente.
+
+Investimento---
 
 ## 🗓️ CRONOGRAMA
 
