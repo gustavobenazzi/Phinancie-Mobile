@@ -88,6 +88,7 @@ Indivíduos que desejam acompanhar evolução de ativos, passivos, patrimônio l
 
 O sistema melhora a clareza financeira, auxilia na tomada de decisões, reduz erros, facilita o acompanhamento de metas e promove maior organização e segurança.
 Com isso, o usuário ganha autonomia, previsibilidade e tranquilidade sobre sua vida financeira.
+
 ---
 
 ## 🏗️ ESCOPO
