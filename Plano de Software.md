@@ -251,7 +251,18 @@ de desenvolvimento vai ser utilizado o trello para o acompanhamento.
 
 <h6 style="color: red;">AULA 08</h6>
 
-No projeto o processo ágil utilizado foi o KABAM,, por utilizar quadros vizuais para gerenciar o fluxo de tarefa e identificar erros.
+O processo ágil adotado no projeto foi baseado no Kanban, devido à sua eficiência no gerenciamento contínuo de tarefas e na visualização clara do fluxo de trabalho. A escolha desse método se deu pela sua simplicidade, flexibilidade e pela facilidade em identificar gargalos, permitindo que a equipe acompanhe o progresso em tempo real e realize melhorias constantes no processo.
+
+O uso do Kanban facilitou:
+
+- A organização das tarefas em diferentes estágios.
+- A priorização de demandas.
+- A rápida identificação de problemas ou bloqueios.
+- A melhoria do fluxo de entrega contínua.
+  
+Para gerenciar visualmente esse fluxo, foi utilizado um quadro no Trello:
+
+[Link do Trello de Desenvolvimento](https://trello.com/b/uFcnKZ07/phinancie-mobile)
 
 
 ### Definição de pronto (DoD)
