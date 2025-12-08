@@ -241,6 +241,7 @@ acesse e consiga verificar o que pode ser feito e melhorado.
 Os responsável pelas entregas será o Lider do projeto Fernando Vassoler, vai utilizar o excel com um planilha,
 definindo a tarefas e data de realização estimada, e realização rea. Para validar a entrega e realização das tarefas
 de desenvolvimento vai ser utilizado o trello para o acompanhamento.
+
 ---
 
 ## 💻 PROCESSO DE DESENVOLVIMENTO
@@ -249,7 +250,7 @@ de desenvolvimento vai ser utilizado o trello para o acompanhamento.
 
 <h6 style="color: red;">AULA 08</h6>
 
-No projeto o processo ágil utilizado foi o KABAN, por utilizar quadros vizuais para gerenciar o fluxo de tarefa e identificar erros.
+No projeto o processo ágil utilizado foi o KABAM,, por utilizar quadros vizuais para gerenciar o fluxo de tarefa e identificar erros.
 
 
 ### Definição de pronto (DoD)
@@ -274,6 +275,8 @@ Investimento---
 O cronograma foi se baseado utilizando os conteúdos e atividades propostas em sala de aula, sendo utilizado para controle de 
 tempo de tarefa, finalização e andamento do projeto. Utilizando o Excel como ferramenta para acompanhar o andamento do projeto
 e o trello para acompanhar tarefas especificas que necessitam de subtarefas para serem concluídas.
+
+[Cronograma](https://docs.google.com/spreadsheets/d/17Kd9LBlR5lP0n9gtU0hmdCeo4OIqZ7wQudYuGB326dU/edit?gid=896653393#gid=896653393)
 
 ---
 
@@ -303,7 +306,7 @@ e o trello para acompanhar tarefas especificas que necessitam de subtarefas para
 
 <h6 style="color: red;">AULA 05</h6>
 
-O detalhamento completo de como será realizada a gestão de qualidade do projeto pode ser encontrado no [Plano de Garantia de Qualidade de Software (PGQS)](https://www.example.com/).
+O detalhamento completo de como será realizada a gestão de qualidade do projeto pode ser encontrado no [Plano de Garantia de Qualidade de Software (PGQS)](https://github.com/gustavobenazzi/Phinancie-Mobile/blob/main/Plano%20de%20Garantia%20da%20Qualidade%20de%20Software%20(PGQS).md).
 
 ---
 
@@ -311,7 +314,7 @@ O detalhamento completo de como será realizada a gestão de qualidade do projet
 
 <h6 style="color: red;">AULA 07</h6>
 
-O detalhamento completo da arquitetura do projeto pode ser encontrado no [Documento de Arquitetura de Software (DAS)](https://www.example.com/).
+O detalhamento completo da arquitetura do projeto pode ser encontrado no [Documento de Arquitetura de Software (DAS)](https://github.com/gustavobenazzi/Phinancie-Mobile/blob/main/_Phinancie-Mobile-DAS.md_).
 
 ---
 
@@ -321,7 +324,9 @@ Listar riscos reais ou potenciais e ações práticas que serão aplicadas para 
 
 | Risco                        | Probabilidade                | Impacto                       | Ação de mitigação            |
 | ---------------------------- | ---------------------------- | ----------------------------- | ---------------------------- |
-| Risco                        | 🟥Alta / 🟨 Média / 🟩 Baixa | 🟥 Alto / 🟨 Médio / 🟩 Baixo | Ação                         |
+| Risco                        | 🟥Alta / 🟨 Média / 🟩 Baixa | 🟥 Alto / 🟨 Médio / 🟩 Baixo | Ação                        |
+| Bugs críticos não detectados | 🟨 Média                     | 🟥 Alto                       | Revisões de código regulares |
+| Falta de Documentação        | 🟨 Média                     | 🟨 Médio                      | Revisão de Documentação      |
 | Bugs críticos não detectados | 🟨 Média                     | 🟥 Alto                       | Revisões de código regulares |
 
 ---
@@ -330,10 +335,13 @@ Listar riscos reais ou potenciais e ações práticas que serão aplicadas para 
 
 ### Hardware/ambiente
 
-Detalhar os recursos de hardware e/ou ambiente que serão utilizados para desenvolvimento do projeto.
+Necessitariamos de um servidor para rodar o projeto podendo ser utilziado um serviço de nuvem Paas, para podermos rodar nosso projeto em desenvolvimento sem se precupar com infraestrutura
 
 ### Softwares/ferramentas
 
-Detalhar os recursos de software e/ou ferramentas que serão utilizados para desenvolvimento do projeto.
+**Linguagem**: JavaScript
+- **Bibliotecas/Frameworks**: React (para UI), Redux (gerenciamento de estado), Axios (requisições HTTP).
+- **Ambiente de Desenvolvimento**: Node.js, com uso do npm/yarn para gerenciamento de pacotes.
+- **Controle de Versão**: Git, hospedado no GitHub.
 
 ---
