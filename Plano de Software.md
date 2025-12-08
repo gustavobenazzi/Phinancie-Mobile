@@ -312,6 +312,12 @@ e o trello para acompanhar tarefas especificas que necessitam de subtarefas para
 - Indicar como atualizar o Kanban e demais documentos quando houver mudanças
 - Definir como lidar com ajustes de prioridades ou escopo ao longo do projeto
 
+### Isos Propostas
+
+1. ISO/IEC 29110 — Engenharia de Software para Equipes Pequenas
+2. ISO/IEC 25010 — Qualidade do Produto de Software
+3. ISO/IEC 27001 — Sistema de Gestão de Segurança da Informação
+
 ---
 
 ## ☑️ GARANTIA DA QUALIDADE
