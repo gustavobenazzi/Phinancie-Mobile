@@ -88,6 +88,7 @@ Indivíduos que desejam acompanhar evolução de ativos, passivos, patrimônio l
 
 O sistema melhora a clareza financeira, auxilia na tomada de decisões, reduz erros, facilita o acompanhamento de metas e promove maior organização e segurança.
 Com isso, o usuário ganha autonomia, previsibilidade e tranquilidade sobre sua vida financeira.
+
 ---
 
 ## 🏗️ ESCOPO
@@ -250,7 +251,18 @@ de desenvolvimento vai ser utilizado o trello para o acompanhamento.
 
 <h6 style="color: red;">AULA 08</h6>
 
-No projeto o processo ágil utilizado foi o KABAM,, por utilizar quadros vizuais para gerenciar o fluxo de tarefa e identificar erros.
+O processo ágil adotado no projeto foi baseado no Kanban, devido à sua eficiência no gerenciamento contínuo de tarefas e na visualização clara do fluxo de trabalho. A escolha desse método se deu pela sua simplicidade, flexibilidade e pela facilidade em identificar gargalos, permitindo que a equipe acompanhe o progresso em tempo real e realize melhorias constantes no processo.
+
+O uso do Kanban facilitou:
+
+- A organização das tarefas em diferentes estágios.
+- A priorização de demandas.
+- A rápida identificação de problemas ou bloqueios.
+- A melhoria do fluxo de entrega contínua.
+  
+Para gerenciar visualmente esse fluxo, foi utilizado um quadro no Trello:
+
+[Link do Trello de Desenvolvimento](https://trello.com/b/uFcnKZ07/phinancie-mobile)
 
 
 ### Definição de pronto (DoD)
@@ -299,6 +311,12 @@ e o trello para acompanhar tarefas especificas que necessitam de subtarefas para
 - Explicar como alterações de requisitos serão registradas e aprovadas
 - Indicar como atualizar o Kanban e demais documentos quando houver mudanças
 - Definir como lidar com ajustes de prioridades ou escopo ao longo do projeto
+
+### Isos Propostas
+
+1. ISO/IEC 29110 — Engenharia de Software para Equipes Pequenas
+2. ISO/IEC 25010 — Qualidade do Produto de Software
+3. ISO/IEC 27001 — Sistema de Gestão de Segurança da Informação
 
 ---
 
