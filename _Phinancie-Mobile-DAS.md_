@@ -1,0 +1,93 @@
+# Documento de Arquitetura de Software (DAS)
+
+## 1. Informações Gerais
+- **Nome do Sistema**: Phinancie Mobile
+- **Repositório GitHub**: [gustavobenazzi/Phinancie-Mobile](https://github.com/gustavobenazzi/Phinancie-Mobile)
+- **Linguagem Principal**: JavaScript (100%)
+
+---
+
+## 2. Objetivo
+Este documento apresenta a arquitetura do sistema **Phinancie Mobile**, um projeto desenvolvido em JavaScript. Ele visa garantir qualidade, manutenibilidade e desempenho ao adotar boas práticas de engenharia de software.
+
+---
+
+## 3. Escopo
+O **Phinancie Mobile** é uma aplicação destinada a gerir as finanças pessoais de seus usuários. Sua base tecnológica é implementada em JavaScript e utiliza frameworks e bibliotecas modernos para criar uma experiência agradável e intuitiva.
+
+---
+
+## 4. Requisitos de Qualidade (ISO 25010)
+### 4.1 Manutenibilidade
+- **Modularidade**: O código será dividido em componentes reutilizáveis para facilitar alterações e melhorias.
+- **Analisabilidade**: Comentários e uma documentação clara acompanham o código para uma fácil compreensão.
+- **Modificabilidade**: Facilidade de adaptação aos novos requisitos de negócios.
+
+### 4.2 Desempenho
+- **Tempo de Resposta**: A aplicação deve carregar em menos de 2 segundos na maioria dos dispositivos.
+- **Capacidade de Escala**: Design escalável para atender ao aumento progressivo de usuários.
+
+### 4.3 Segurança
+- **Proteção de Dados**: Todas as informações financeiras serão armazenadas e transmitidas de maneira segura.
+- **Autenticação e Autorização**: Implementação de autenticação segura (e.g., OAuth2) para proteger o acesso.
+
+### 4.4 Usabilidade
+- **Acessibilidade**: Design responsivo e acessível para diferentes perfis de usuários.
+- **Experiência do Usuário (UX)**: Interface intuitiva focada na entrega de valor ao usuário.
+
+---
+
+## 5. Arquitetura do Sistema
+### 5.1 Visão Geral
+O sistema segue uma arquitetura baseada em componentes, organizada de forma a garantir manutenibilidade e escalabilidade. A aplicação utiliza o padrão **MVC (Model-View-Controller)**.
+
+### 5.2 Diagrama de Arquitetura
+*(Inserir aqui um diagrama representando os principais módulos do sistema e sua interação)*
+
+### 5.3 Camadas da Arquitetura
+- **Interface do Usuário**: Responsável pela interação com o usuário.
+- **Serviços**: Contém a lógica principal da aplicação.
+- **Comunicação com a API**: Responsável por interagir com serviços externos.
+
+---
+
+## 6. Tecnologia e Ferramentas
+- **Linguagem**: JavaScript
+- **Bibliotecas/Frameworks**: React (para UI), Redux (gerenciamento de estado), Axios (requisições HTTP).
+- **Ambiente de Desenvolvimento**: Node.js, com uso do npm/yarn para gerenciamento de pacotes.
+- **Controle de Versão**: Git, hospedado no GitHub.
+
+---
+
+## 7. Estrutura de Pastas
+A estrutura sugerida para o projeto é a seguinte:
+```
+src/
+│
+├── components/        # Componentes React reutilizáveis
+├── services/          # Lógica de negócios e chamadas à API
+├── screens/           # Telas e fluxos principais
+├── assets/            # Recursos estáticos (imagens, fontes, ícones)
+└── utils/             # Helpers e funções utilitárias
+```
+
+---
+
+## 8. Padrões de Código
+- **Formatação**: Uso de ESLint e Prettier para padronização.
+- **Boas Práticas**: Adotar as melhores práticas sugeridas pelo JavaScript Standard Style.
+- **Naming Convention**: Padrão camelCase para variáveis e PascalCase para componentes React.
+
+---
+
+## 9. Estratégia de Testes
+- **Testes Unitários**: Utilizar bibliotecas como Jest para validar unidades específicas do código.
+- **Testes de Integração**: Garantir que os diferentes módulos funcionem em conjunto.
+- **Testes Funcionais**: Garantir que o sistema funcione conforme esperado do ponto de vista do usuário.
+
+---
+
+## 10. Considerações Finais
+A arquitetura proposta para o **Phinancie Mobile** visa atender aos principais requisitos de qualidade, sendo modular e escalável, com foco na experiência do cliente e segurança de seus dados. Este documento deve ser revisado e atualizado à medida que o sistema evolui.
+
+---
