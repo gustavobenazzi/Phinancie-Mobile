@@ -35,6 +35,7 @@ export default function TransactionsScreen() {
       {isFabOpen && (
         <View className="absolute right-6 items-end z-50" style={{ bottom: ACTIONS_BOTTOM }}>
           <TouchableOpacity 
+            testID="fab-action-add"
             className="bg-white p-3 rounded-xl shadow-lg mb-3 flex-row items-center"
             onPress={() => {
               navigation.navigate('AddTransaction');
@@ -45,6 +46,7 @@ export default function TransactionsScreen() {
           </TouchableOpacity>
           
           <TouchableOpacity 
+            testID="fab-action-import"
             className="bg-white p-3 rounded-xl shadow-lg mb-3 flex-row items-center"
             onPress={() => {
               navigation.navigate('StatementImport');
@@ -57,6 +59,7 @@ export default function TransactionsScreen() {
       )}
 
       <TouchableOpacity 
+        testID="transactions-fab"
         className="absolute right-6 bg-[#00D09E] w-14 h-14 rounded-full items-center justify-center shadow-lg z-50"
         style={{ bottom: FAB_BOTTOM }}
         onPress={toggleFab}

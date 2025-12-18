@@ -26,7 +26,7 @@ export default function FormScreen({
           keyboardShouldPersistTaps="handled"
           keyboardDismissMode={Platform.OS === 'ios' ? 'interactive' : 'on-drag'}
         >
-          <View className={contentClassName}>
+          <View className={contentClassName} testID="form-screen-container">
             {title ? (
               <Text className="text-3xl font-bold text-center mb-2 text-gray-800">{title}</Text>
             ) : null}

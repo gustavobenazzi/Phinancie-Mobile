@@ -29,7 +29,7 @@ const SummaryCard = ({ totals: externalTotals, loading: externalLoading }) => {
   return (
     <View className="bg-black rounded-[31px] p-5">
       {isLoading ? (
-        <ActivityIndicator size="small" color="#FFFFFF" />
+        <ActivityIndicator testID="summary-loading" size="small" color="#FFFFFF" />
       ) : (
         <View>
           <View className="flex-row items-center">
